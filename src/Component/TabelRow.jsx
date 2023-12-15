@@ -4,9 +4,13 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 // import EditProduct from "./EditProductPopup";
 import Swal from "sweetalert2";
+import { getParsedDate } from "../store/actions/parseDate";
+import { formatDate } from "../store/actions/formatDate";
 
-export default function TableRow() {
+
+export default function TableRow({employee, idx}) {
   const dispatch = useDispatch();
+  const [contractEndPeriod, setContractEndPeriod] = useState(false)
   // const [showImages, setShowImages] = useState(false);
   // const [showClicked, setShowClicked] = useState(false);
   // const [showEdit, setShowEdit] = useState(false);
@@ -39,40 +43,36 @@ export default function TableRow() {
   //   setShowEdit(true);
   //   setEditClicked(true);
   // };
+  
   return (
     <>
       <tr className="text-left ">
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          {/* {idx + 1} */}
+          {idx + 1}
+        </td>
+        <td className=" py-3 px-4 border-b-[1px]  w-[20px]   border-slate-300 ">
+          <p className="line-clamp-1">{employee.id}</p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          {/* {product.name} */}
+          {`${employee.firstName} ${employee.lastName}`}
+        </td>
+        <td className=" py-3 px-4 border-b-[1px]  w-[20px]   border-slate-300 ">
+          <p className="line-clamp-1">{employee.BranchId}</p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          {/* {product.Category.name} */}
+          {employee.Branch.name}
+        </td>
+        <td className=" py-3 px-4 border-b-[1px]  w-[20px]   border-slate-300 ">
+          <p className="line-clamp-1">{employee.PositionId}</p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          {/* ${product.price} */}
+          {employee.Position.name}
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          {/* {product.User.email} */}
+          {getParsedDate(employee.startDate)}
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          {/* <img
-            src={product.mainImg}
-            className="object-cover h-[100px] w-[100px]"
-          /> */}
-        </td>
-        <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          <button
-            type="button"
-            // onClick={handleShowImage}
-            className="grid place-content-start"
-          >
-            <div className="border border-black py-1 px-3 bg-white text-black hover:bg-black hover:text-white">
-              Show images
-            </div>
-          </button>
+          {getParsedDate(employee.endDate)}
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
           <div className="flex flex-row gap-4">
@@ -81,7 +81,7 @@ export default function TableRow() {
               type="button"
               className="grid place-content-start"
             >
-              <div className="border border-black py-1 px-3 bg-white text-black hover:bg-black hover:text-white">
+              <div className=" bg-[#1B9ABC] py-1 px-3  text-white hover:bg-[#117a97] hover:text-white rounded-lg">
                 Edit
               </div>
             </button>
@@ -90,27 +90,21 @@ export default function TableRow() {
               type="button"
               className="grid place-content-start"
             >
-              <div className="border border-black py-1 px-3 bg-white text-black hover:bg-black hover:text-white">
+              <div className=" py-1 px-3 bg-[#F15922] text-white hover:bg-[#d04917] hover:text-white rounded-lg">
                 Delete
               </div>
             </button>
           </div>
         </td>
       </tr>
-      {/* {showClicked && (
-        <ImagesPopup
-          onClose={handleOnClose}
-          visible={showImages}
-          id={product.id}
-        />
-      )}
-      {editClicked && (
+      
+      {/* {editClicked && (
         <EditProduct
           onClose={handleOnCloseEdit}
           visible={showEdit}
           id={product.id}
         />
-      )} */}
+      )}  */}
     </>
   );
 }

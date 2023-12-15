@@ -8,18 +8,18 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateProduct({ visible, onClose }) {
   // const dispatch = useDispatch();
-  // const [input, setInput] = useState({
-  //   name: "",
-  //   description: "",
-  //   price: "",
-  //   mainImg: "",
-  //   categoryId: "",
-  //   imgUrl: [
-  //     {
-  //       imgUrl: "",
-  //     },
-  //   ],
-  // });
+  const [input, setInput] = useState({
+    name: "",
+    description: "",
+    price: "",
+    mainImg: "",
+    categoryId: "",
+    imgUrl: [
+      {
+        imgUrl: "",
+      },
+    ],
+  });
   // let categories = useSelector((state) => {
   //   return state.categoryReducer.categories;
   // });
@@ -59,14 +59,14 @@ export default function CreateProduct({ visible, onClose }) {
   //   });
   // };
 
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-  //   setInput({
-  //     ...input,
-  //     [name]: value,
-  //   });
-  // };
+    setInput({
+      ...input,
+      [name]: value,
+    });
+  };
 
   // const handleImageChange = (event, idx) => {
   //   const { name, value } = event.target;
@@ -125,124 +125,41 @@ export default function CreateProduct({ visible, onClose }) {
   return (
     <>
       <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-[2px] flex items-center justify-center">
-        <div className="bg-white p-6 w-[500px]">
-          <div className="flex flex-row justify-between">
-            <h1 className="font-semibold text-center text-xl text-black">
-              Create New Product
+        <div className="bg-white rounded-lg p-6 w-[500px]">
+        <div className="flex flex-row justify-between">
+            <h1 className="font-semibold text-center text-xl text-[#1B9ABC]">
+              Masukkan PIN
             </h1>
-            <div className="">
-              <LiaWindowCloseSolid
-                onClick={onClose}
-                size="25px"
-                className="cursor-pointer hover:bg-slate-100"
-              />
+            <div className="text-[#1B9ABC]">
+              <LiaWindowCloseSolid onClick={onClose} size="25px" className="cursor-pointer hover:bg-slate-100"/>
             </div>
+
           </div>
 
-          <form 
-          // onSubmit={handleSubmit}
-           id="form-add" className="">
+          <form onSubmit={handleSubmit} id="form-login" className="">
             <div className="flex flex-col mt-2">
-              <label className="text-black text-md ">Name</label>
               <input
-                type="text"
-                // value={input.name}
-                name="name"
-                // onChange={handleChange}
-                placeholder="Input name..."
-                className="w-[100%] h-10 pl-4 mt-1 bg-white border border-black text-black text-md"
-              />
-            </div>
-            <div className="flex flex-col mt-2">
-              <label className="text-black text-md ">Description</label>
-              <input
-                type="text"
-                // value={input.description}
-                name="description"
-                // onChange={handleChange}
-                placeholder="Input description..."
-                className="w-[100%] h-10 pl-4 mt-1 bg-white border border-black text-black text-md"
-              />
-            </div>
-
-            <div className="flex flex-col mt-2">
-              <label className="text-black text-md ">Price</label>
-              <input
-                type="number"
-                // value={input.price}
-                name="price"
-                // onChange={handleChange}
-                placeholder="Input price..."
-                className="w-[100%] h-10 pl-4 mt-1 bg-white border border-black text-black text-md"
-              />
-            </div>
-            {/* <div className="flex flex-col mt-2">
-              <label className="text-black text-md ">Category</label>
-              <select
-                value={input.categoryId}
-                name="categoryId"
-                id="category"
+                type="password"
+                value={input.PIN}
+                name="PIN"
                 onChange={handleChange}
-                className="w-[100%] h-10 pl-4 mt-1 bg-white border border-black text-black text-md"
-              >
-                <option value="" disabled>
-                  Select category
-                </option>
-                {categories.map((el) => {
-                  return (
-                    <option value={el.id} key={el.id}>
-                      {el.name}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <div className="flex flex-col mt-2">
-              <label className="text-black text-md ">Image Url</label>
-              <input
-                type="text"
-                value={input.mainImg}
-                name="mainImg"
-                onChange={handleChange}
-                placeholder="Main image url..."
-                className="w-[100%] h-10 pl-4 mt-1 bg-white border border-black text-black text-md"
+                placeholder="Masukkan PIN..."
+                className="w-[100%] h-10 p-6 mt-4 bg-white border border-[#1B9ABC] rounded-lg text-[#1B9ABC] text-md"
               />
+            </div>
 
-              {input.imgUrl.map((image, idx) => {
-                // return <AdditionalInput key={idx} />
-                return (
-                  <div className="flex flex-row" key={idx}>
-                    <input
-                      type="text"
-                      value={input.imgUrl[idx].imgUrl}
-                      name="imgUrl"
-                      onChange={(event) => handleImageChange(event, idx)}
-                      placeholder="Additional image url..."
-                      className="w-[85%] h-10 pl-4 mt-4 bg-white border border-black text-black text-md"
-                    />
-                    <div
-                      onClick={handleRemove}
-                      className="w-[15%] h-10 mt-4 cursor-pointer hover:underline grid content-center text-right"
-                    >
-                      remove
-                    </div>
-                  </div>
-                );
-              })}
-            </div> */}
-
-            <div className="w-[100%] grid grid-cols-3 gap-2">
+            <div className="w-[100%] grid grid-cols-2 mt-2 gap-2">
               <button
-                // onClick={handleAddInput}
+                onClick={onClose}
                 type="button"
-                className="h-10 mt-3 bg-white text-md text-black border border-black grid content-center hover:bg-black hover:text-white"
+                className="h-10 mt-6  bg-white text-md text-[#1B9ABC] border border-[#1B9ABC] rounded-lg grid content-center hover:bg-[#1B9ABC] hover:text-white"
               >
-                Add Image
+                Cancel
               </button>
 
               <button
                 type="submit"
-                className="h-10 mt-3 col-start-3 bg-black text-md text-white border border-black grid content-center hover:bg-[#1b1b1b] hover:text-white"
+                className="h-10 mt-6  bg-[#1B9ABC] text-md text-white border border-[#1B9ABC] rounded-lg grid content-center hover:bg-[#167d99]hover:text-white"
               >
                 Save
               </button>
