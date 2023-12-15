@@ -64,7 +64,7 @@ export default function Dashboard() {
                 NAMA JABATAN
               </th>
               <th className=" py-3 px-4 border-b-[1px] border-slate-600 text-gray-50">
-                ACTION
+                ACT
               </th>
             </tr>
           </thead>
