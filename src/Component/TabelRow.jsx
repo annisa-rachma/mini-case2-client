@@ -7,38 +7,32 @@ import Swal from "sweetalert2";
 import { getParsedDate } from "../store/actions/parseDate";
 import { formatDate } from "../store/actions/formatDate";
 import EditEmployee from "./EditEmployeePopup";
+import { handleDeleteEmployee } from "../store/actions/actionEmployee";
 
 
 export default function TableRow({employee, idx}) {
   const dispatch = useDispatch();
-  const [contractEndPeriod, setContractEndPeriod] = useState(false)
-  // const [showImages, setShowImages] = useState(false);
-  // const [showClicked, setShowClicked] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
-  // const handleDelete = () => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       dispatch(handleDeleteProduct(product.id));
-  //       Swal.fire("Deleted!", "Your selected product has been deleted.", "success");
-  //     }
-  //   });
-  // };
-  // const handleOnClose = () => setShowImages(false);
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Apakah anda ingin menghapus data pegawai?",
+      text: "Data tidak akan dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#1B9ABC",
+      cancelButtonColor: "#F15922",
+      confirmButtonText: "Ya",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(handleDeleteEmployee(employee.id));
+        Swal.fire("Terhapus!", "Data pegawai yang dipilih berhasil dihapus.", "success");
+      }
+    });
+  };
   const handleOnCloseEdit = () => setShowEdit(false);
 
-  // const handleShowImage = () => {
-  //   setShowImages(true);
-  //   setShowClicked(true);
-  // };
 
   const handleShowEdit = () => {
     setShowEdit(true);
@@ -98,7 +92,7 @@ export default function TableRow({employee, idx}) {
               </div>
             </button>
             <button
-              // onClick={handleDelete}
+              onClick={handleDelete}
               type="button"
               className="grid place-content-start"
             >

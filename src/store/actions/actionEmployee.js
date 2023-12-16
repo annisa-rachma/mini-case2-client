@@ -82,3 +82,19 @@ export function handleEditEmployee(payload, id) {
     }
   };
 }
+
+export function handleDeleteEmployee(id) {
+  return async function (dispatch) {
+    try {
+      const res = await fetch(import.meta.env.VITE_BASE_URL + `/employees/${id}`, {
+        method: "delete",
+      });
+      const data = await res.json();
+      if (!res.ok) throw data;
+      dispatch(fetchEmployees())
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };
+}
