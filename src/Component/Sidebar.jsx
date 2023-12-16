@@ -14,42 +14,12 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState("");
 
-  const handleLogout = (e) => {
-    e.preventDefault()
-    Swal.fire({
-      title: "Anda yakin ingin keluar?",
-      showCancelButton: true,
-      confirmButtonColor: "#1B9ABC",
-      cancelButtonColor: "#F15922",
-      confirmButtonText: "Ya",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        localStorage.clear();
-        navigate("/login");
-      }
-    });
-  };
 
   useEffect(() => {
     // Use a switch statement or if-else if conditions to set currentPage based on pathname
     switch (location.pathname) {
       case "/":
         setCurrentPage("dashboard");
-        break;
-      case "/transfer":
-        setCurrentPage("transfer");
-        break;
-      case "/transfer/konfirmasi":
-        setCurrentPage("transfer");
-        break;
-      case "/pembayaran":
-        setCurrentPage("pembayaran");
-        break;
-      case "/pembayaran/konfirmasi":
-        setCurrentPage("pembayaran");
-        break;
-      case "/riwayat":
-        setCurrentPage("riwayat");
         break;
       default:
         setCurrentPage("/");
@@ -81,60 +51,6 @@ export default function Sidebar() {
             </Link>
           </div>
 
-          <div
-            className={`w-[100%] h-8 m-auto font-medium mt-4  hover:text-primary  group ${
-              currentPage == "transfer" ? " text-primary " : ""
-            }`}
-          >
-            <Link to={`/transfer`} className="flex-row flex">
-              <span className="absolute w-1.5 h-8 bg-primary rounded-r-full left-0 scale-y-0 -translate-x-full group-hover:scale-y-100 group-hover:translate-x-0 transition-transform ease-in-out " />
-              <div>
-                <BiTransferAlt size="25px" />
-              </div>
-              <div className="ml-4 grid place-content-center  ">Transfer</div>
-            </Link>
-          </div>
-
-          <div
-            className={`w-[100%] h-8 m-auto font-medium mt-4  hover:text-primary  group ${
-              currentPage == "pembayaran" ? " text-primary " : ""
-            }`}
-          >
-            <Link to={`/pembayaran`} className="flex-row flex">
-              <span className="absolute w-1.5 h-8 bg-primary rounded-r-full left-0 scale-y-0 -translate-x-full group-hover:scale-y-100 group-hover:translate-x-0 transition-transform ease-in-out " />
-              <div className="w-[25px]">
-                <FaFileInvoiceDollar size="23px" />
-              </div>
-              <div className="ml-4 grid place-content-center  ">Pembayaran</div>
-            </Link>
-          </div>
-
-          <div
-            className={`w-[100%] h-8 m-auto font-medium mt-4  hover:text-primary  group ${
-              currentPage == "riwayat" ? " text-primary " : ""
-            }`}
-          >
-            <Link to={`/riwayat`} className="flex-row flex">
-              <span className="absolute w-1.5 h-8 bg-primary rounded-r-full left-0 scale-y-0 -translate-x-full group-hover:scale-y-100 group-hover:translate-x-0 transition-transform ease-in-out " />
-              <div className="w-[25px]">
-                <FaHistory size="23px" />
-              </div>
-              <div className="ml-4 grid place-content-center  ">Riwayat</div>
-            </Link>
-          </div>
-
-          <div
-            className={`w-[100%] h-8 m-auto font-medium mt-4  hover:text-primary  group `}
-            onClick={handleLogout}
-          >
-            <Link className="flex-row flex">
-              <span className="absolute w-1.5 h-8 bg-primary rounded-r-full left-0 scale-y-0 -translate-x-full group-hover:scale-y-100 group-hover:translate-x-0 transition-transform ease-in-out " />
-              <div>
-                <RiLogoutBoxRLine size="25px" />
-              </div>
-              <div className="ml-4 grid place-content-center  ">Keluar</div>
-            </Link>
-          </div>
         </div>
       </div>
     </>
