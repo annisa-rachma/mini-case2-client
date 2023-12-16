@@ -6,6 +6,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { getParsedDate } from "../store/actions/parseDate";
 import { formatDate } from "../store/actions/formatDate";
+import EditEmployee from "./EditEmployeePopup";
 
 
 export default function TableRow({employee, idx}) {
@@ -13,8 +14,8 @@ export default function TableRow({employee, idx}) {
   const [contractEndPeriod, setContractEndPeriod] = useState(false)
   // const [showImages, setShowImages] = useState(false);
   // const [showClicked, setShowClicked] = useState(false);
-  // const [showEdit, setShowEdit] = useState(false);
-  // const [editClicked, setEditClicked] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [editClicked, setEditClicked] = useState(false);
   // const handleDelete = () => {
   //   Swal.fire({
   //     title: "Are you sure?",
@@ -32,17 +33,17 @@ export default function TableRow({employee, idx}) {
   //   });
   // };
   // const handleOnClose = () => setShowImages(false);
-  // const handleOnCloseEdit = () => setShowEdit(false);
+  const handleOnCloseEdit = () => setShowEdit(false);
 
   // const handleShowImage = () => {
   //   setShowImages(true);
   //   setShowClicked(true);
   // };
 
-  // const handleShowEdit = () => {
-  //   setShowEdit(true);
-  //   setEditClicked(true);
-  // };
+  const handleShowEdit = () => {
+    setShowEdit(true);
+    setEditClicked(true);
+  };
   
   return (
     <>
@@ -88,7 +89,7 @@ export default function TableRow({employee, idx}) {
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
           <div className="flex flex-row gap-4">
             <button
-              // onClick={handleShowEdit}
+              onClick={handleShowEdit}
               type="button"
               className="grid place-content-start"
             >
@@ -109,13 +110,13 @@ export default function TableRow({employee, idx}) {
         </td>
       </tr>
       
-      {/* {editClicked && (
-        <EditProduct
+      {editClicked && (
+        <EditEmployee
           onClose={handleOnCloseEdit}
           visible={showEdit}
-          id={product.id}
+          id={employee.id}
         />
-      )}  */}
+      )} 
     </>
   );
 }
