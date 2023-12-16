@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import AddProductPopup from "../Component/AddProductPopup";
+import AddEmployee from "../Component/AddEmployeePopup";
 import TableRow from "../Component/TabelRow";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEmployees } from "../store/actions/actionEmployee";
@@ -85,7 +85,7 @@ export default function Dashboard() {
         </table>
       </div>
 
-      <AddProductPopup onClose={handleOnClose} visible={showAdd}/>
+      <AddEmployee onClose={handleOnClose} visible={showAdd}/>
     </>
   );
 }

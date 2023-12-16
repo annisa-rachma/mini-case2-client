@@ -54,13 +54,19 @@ export default function TableRow({employee, idx}) {
           <p className="line-clamp-1">{employee.id}</p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
+          <p className="w-[100px]">
           {`${employee.firstName} ${employee.lastName}`}
+
+          </p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  w-[20px]   border-slate-300 ">
           <p className="line-clamp-1">{employee.BranchId}</p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
+          <p className="w-[100px]">
+
           {employee.Branch.name}
+          </p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  w-[20px]   border-slate-300 ">
           <p className="line-clamp-1">{employee.PositionId}</p>
@@ -69,10 +75,15 @@ export default function TableRow({employee, idx}) {
           {employee.Position.name}
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
+          <p className="w-[90px]">
           {getParsedDate(employee.startDate)}
+          </p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
+          <p className="w-[90px]">
           {getParsedDate(employee.endDate)}
+
+          </p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
           <div className="flex flex-row gap-4">

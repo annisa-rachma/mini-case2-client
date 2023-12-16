@@ -25,3 +25,24 @@ export function fetchEmployees() {
         }
   }
 }
+
+export function handleAddEmployee(payload) {
+  return async function (dispatch) {
+    try {
+      const res = await fetch(import.meta.env.VITE_BASE_URL + "/employees", {
+        method: "post",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw data;
+      }
+      dispatch(fetchEmployees())
+    } catch (error) {
+      throw error;
+    }
+  };
+}
