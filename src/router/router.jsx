@@ -1,10 +1,6 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import Layout from "../Component/Layout";
 import Dashboard from "../Pages/Dashboard";
-import LoginPage from "../Pages/LoginPage";
-import Pembayaran from "../Pages/Pembayaran";
-import Riwayat from "../Pages/Riwayat";
-import Transfer from "../Pages/Transfer";
 
 
 const router = createBrowserRouter([
@@ -21,32 +17,8 @@ const router = createBrowserRouter([
             path: "/",
             element: <Dashboard />,
         },
-        {
-          path : '/transfer',
-          element : <Transfer/>,
-          children: [
-            {
-              path : '/transfer/konfirmasi',
-              element : <Transfer/>,
-            }
-
-          ]
-        },
-        {
-            path : '/riwayat',
-            element : <Riwayat/>
-        },
-        {
-          path : '/pembayaran',
-          element : <Pembayaran/>,
-          children: [
-            {
-              path : '/pembayaran/konfirmasi',
-              element : <Pembayaran/>,
-            }
-
-          ]
-        },
+        
+        
       ]
   },
   // {

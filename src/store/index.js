@@ -4,16 +4,14 @@ import {
   legacy_createStore as createStore,
 } from "redux";
 import thunk from "redux-thunk";
-import paymentReducer from "./reducers/paymentReducer";
-import reportReducer from "./reducers/reportReducer";
-import transferReducer from "./reducers/transferReducer";
-import userReducer from "./reducers/userReducer";
+import branchReducer from "./reducers/brachesReducer";
+import employeeReducer from "./reducers/employeesReducer";
+import positionReducer from "./reducers/positionReducer";
 
 const rootReducer = combineReducers({
-  userReducer: userReducer,
-  reportReducer: reportReducer,
-  paymentReducer:paymentReducer,
-  transferReducer: transferReducer
+  employeeReducer:employeeReducer,
+  branchReducer:branchReducer,
+  positionReducer:positionReducer
 });
 
 let store = createStore(rootReducer, applyMiddleware(thunk));
