@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 // import EditProduct from "./EditProductPopup";
 import Swal from "sweetalert2";
-import { getParsedDate } from "../store/actions/parseDate";
-import { formatDate } from "../store/actions/formatDate";
+import { getParsedDate } from "../store/helper/parseDate";
+import { formatDate } from "../store/helper/formatDate";
 import EditEmployee from "./EditEmployeePopup";
 import { handleDeleteEmployee } from "../store/actions/actionEmployee";
 
