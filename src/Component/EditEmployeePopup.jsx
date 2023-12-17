@@ -97,14 +97,6 @@ export default function EditEmployee({ visible, onClose, id }) {
     try {
       event.preventDefault();
       await dispatch(handleEditEmployee(input, id));
-      setInput({
-        firstName: "",
-        lastName: "",
-        BranchId: "",
-        PositionId: "",
-        startDate: "",
-        endDate: "",
-      });
       toast.success("Berhasil mengedit data pegawai", {
         position: "top-right",
         autoClose: 2000,

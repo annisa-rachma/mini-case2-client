@@ -64,12 +64,7 @@ export default function AddEmployee({ visible, onClose }) {
       event.preventDefault();
       await dispatch(handleAddEmployee(input));
       setInput({
-        firstName: "",
-        lastName: "",
-        BranchId: "",
-        PositionId: "",
-        startDate: "",
-        endDate: "",
+        name: "",
       });
       toast.success("Berhasil menambahkan pegawai baru", {
         position: "top-right",

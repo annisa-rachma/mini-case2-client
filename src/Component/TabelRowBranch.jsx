@@ -3,6 +3,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import EditEmployee from "./EditEmployeePopup";
 import { handleDeleteEmployee } from "../store/actions/actionEmployee";
+import EditBranch from "./EditBranch";
 
 
 export default function TableRowBranch({branch, idx}) {
@@ -72,10 +73,10 @@ export default function TableRowBranch({branch, idx}) {
       </tr>
       
       {editClicked && (
-        <EditEmployee
+        <EditBranch
           onClose={handleOnCloseEdit}
           visible={showEdit}
-          id={employee.id}
+          id={branch.id}
         />
       )} 
     </>
