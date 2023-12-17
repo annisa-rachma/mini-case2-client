@@ -1,19 +1,20 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { getParsedDate } from "../store/helper/parseDate";
 import EditEmployee from "./EditEmployeePopup";
 import { handleDeleteEmployee } from "../store/actions/actionEmployee";
+import EditBranch from "./EditBranch";
+import { handleDeleteBranch } from "../store/actions/actionBranch";
 
 
-export default function TableRow({employee, idx}) {
+export default function TableRowBranch({branch, idx}) {
   const dispatch = useDispatch();
   const [showEdit, setShowEdit] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
 
   const handleDelete = () => {
     Swal.fire({
-      title: "Apakah anda ingin menghapus data pegawai?",
+      title: "Apakah anda ingin menghapus data cabang?",
       text: "Data tidak akan dapat dikembalikan!",
       icon: "warning",
       showCancelButton: true,
@@ -22,8 +23,8 @@ export default function TableRow({employee, idx}) {
       confirmButtonText: "Ya",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(handleDeleteEmployee(employee.id));
-        Swal.fire("Terhapus!", "Data pegawai yang dipilih berhasil dihapus.", "success");
+        dispatch(handleDeleteBranch(branch.id));
+        Swal.fire("Terhapus!", "Data cabang yang dipilih berhasil dihapus.", "success");
       }
     });
   };
@@ -41,41 +42,13 @@ export default function TableRow({employee, idx}) {
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
           {idx + 1}
         </td>
-        <td className=" py-3 px-4 border-b-[1px]  w-[20px]   border-slate-300 ">
-          <p className="line-clamp-1">{employee.id}</p>
+        <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
+          <p className="">{branch.id}</p>
         </td>
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          <p className="w-[100px]">
-          {`${employee.firstName} ${employee.lastName}`}
-
-          </p>
+          <p className="">{branch.name}</p>
         </td>
-        <td className=" py-3 px-4 border-b-[1px]  w-[20px]   border-slate-300 ">
-          <p className="line-clamp-1">{employee.BranchId}</p>
-        </td>
-        <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          <p className="w-[100px]">
-
-          {employee.Branch.name}
-          </p>
-        </td>
-        <td className=" py-3 px-4 border-b-[1px]  w-[20px]   border-slate-300 ">
-          <p className="line-clamp-1">{employee.PositionId}</p>
-        </td>
-        <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          {employee.Position.name}
-        </td>
-        <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          <p className="w-[90px]">
-          {getParsedDate(employee.startDate)}
-          </p>
-        </td>
-        <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
-          <p className="w-[90px]">
-          {getParsedDate(employee.endDate)}
-
-          </p>
-        </td>
+        
         <td className=" py-3 px-4 border-b-[1px]  border-slate-300 ">
           <div className="flex flex-row gap-4">
             <button
@@ -101,10 +74,10 @@ export default function TableRow({employee, idx}) {
       </tr>
       
       {editClicked && (
-        <EditEmployee
+        <EditBranch
           onClose={handleOnCloseEdit}
           visible={showEdit}
-          id={employee.id}
+          id={branch.id}
         />
       )} 
     </>

@@ -3,7 +3,9 @@ export function fetchPositions() {
     try {
       let url = import.meta.env.VITE_BASE_URL + "/positions";
 
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: { access_token: localStorage.getItem("access_token") },
+      });
       const data = await res.json();
       if (!res.ok) {
         throw data;

@@ -1,44 +1,46 @@
-
 export function fetchEmployees() {
-  return async function(dispatch) {
-      try {
-          let url = import.meta.env.VITE_BASE_URL + "/employees"
+  return async function (dispatch) {
+    try {
+      let url = import.meta.env.VITE_BASE_URL + "/employees";
 
-          // if(params) {
-          //   url += params
-          // }
+      // if(params) {
+      //   url += params
+      // }
 
-          // console.log(url, '<<< url dari action')
+      // console.log(url, '<<< url dari action')
 
-          const res = await fetch(url 
-          //   , {
-          //   headers: { access_token: localStorage.getItem("access_token") },
-          // }
-          );
-          const data = await res.json();
-          if (!res.ok) {
-            throw data;
-          }
-          dispatch({ type: "setEmployee", payload: data })
-        } catch (error) {
-          throw error;
-        }
-  }
+      const res = await fetch(url, {
+        headers: { access_token: localStorage.getItem("access_token") },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw data;
+      }
+      dispatch({ type: "setEmployee", payload: data });
+    } catch (error) {
+      throw error;
+    }
+  };
 }
 
 export function fetchEmployeeDetail(id) {
-  return async function(dispatch) {
-      try {
-          const res = await fetch(import.meta.env.VITE_BASE_URL + `/employees/${id}`);
-          const data = await res.json();
-          if (!res.ok) {
-            throw data;
-          }
-          dispatch({ type: "setEmployeeDetail", payload: data })
-        } catch (error) {
-          throw error;
+  return async function (dispatch) {
+    try {
+      const res = await fetch(
+        import.meta.env.VITE_BASE_URL + `/employees/${id}`,
+        {
+          headers: { access_token: localStorage.getItem("access_token") },
         }
-  }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        throw data;
+      }
+      dispatch({ type: "setEmployeeDetail", payload: data });
+    } catch (error) {
+      throw error;
+    }
+  };
 }
 
 export function handleAddEmployee(payload) {
@@ -49,13 +51,14 @@ export function handleAddEmployee(payload) {
         body: JSON.stringify(payload),
         headers: {
           "Content-Type": "application/json",
+          access_token: localStorage.getItem("access_token"),
         },
       });
       const data = await res.json();
       if (!res.ok) {
         throw data;
       }
-      dispatch(fetchEmployees())
+      dispatch(fetchEmployees());
     } catch (error) {
       throw error;
     }
@@ -65,18 +68,22 @@ export function handleAddEmployee(payload) {
 export function handleEditEmployee(payload, id) {
   return async function (dispatch) {
     try {
-      const res = await fetch(import.meta.env.VITE_BASE_URL + `/employees/${id}`, {
-        method: "put",
-        body: JSON.stringify(payload),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        import.meta.env.VITE_BASE_URL + `/employees/${id}`,
+        {
+          method: "put",
+          body: JSON.stringify(payload),
+          headers: {
+            "Content-Type": "application/json",
+            access_token: localStorage.getItem("access_token"),
+          },
+        }
+      );
       const data = await res.json();
       if (!res.ok) {
         throw data;
       }
-      dispatch(fetchEmployees())
+      dispatch(fetchEmployees());
     } catch (error) {
       throw error;
     }
@@ -86,12 +93,18 @@ export function handleEditEmployee(payload, id) {
 export function handleDeleteEmployee(id) {
   return async function (dispatch) {
     try {
-      const res = await fetch(import.meta.env.VITE_BASE_URL + `/employees/${id}`, {
-        method: "delete",
-      });
+      const res = await fetch(
+        import.meta.env.VITE_BASE_URL + `/employees/${id}`,
+        {
+          method: "delete",
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        }
+      );
       const data = await res.json();
       if (!res.ok) throw data;
-      dispatch(fetchEmployees())
+      dispatch(fetchEmployees());
       return data;
     } catch (error) {
       throw error;
