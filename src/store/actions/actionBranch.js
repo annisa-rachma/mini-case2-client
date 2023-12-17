@@ -16,3 +16,25 @@ export function fetchBranches() {
     }
   };
 }
+
+export function handleAddBranch(payload) {
+  return async function (dispatch) {
+    try {
+      const res = await fetch(import.meta.env.VITE_BASE_URL + "/branches", {
+        method: "post",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.getItem("access_token"),
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw data;
+      }
+      dispatch(fetchBranches());
+    } catch (error) {
+      throw error;
+    }
+  };
+}

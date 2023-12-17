@@ -3,14 +3,12 @@ import { LiaWindowCloseSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { fetchBranches } from "../store/actions/actionBranch";
-import { handleAddEmployee } from "../store/actions/actionEmployee";
-// import { fetchPositions } from "../store/actions/actionPosition";
+import { handleAddBranch } from "../store/actions/actionBranch";
 
 export default function AddBranch({ visible, onClose }) {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
-    name: ""
+    name: "",
   });
 
   const handleChange = (event) => {
@@ -25,7 +23,7 @@ export default function AddBranch({ visible, onClose }) {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      // await dispatch(handleAddEmployee(input));
+      await dispatch(handleAddBranch(input));
       setInput({
         firstName: "",
         lastName: "",
@@ -94,7 +92,7 @@ export default function AddBranch({ visible, onClose }) {
                 className="w-[100%] h-10 p-4 mt-1 bg-white border border-[#1B9ABC] rounded-lg text-[#1B9ABC] text-md"
               />
             </div>
-            
+
             <div className="w-[100%] grid grid-cols-2 mt-2 gap-2">
               <button
                 onClick={onClose}
