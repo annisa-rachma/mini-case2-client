@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import EditEmployee from "./EditEmployeePopup";
 import { handleDeleteEmployee } from "../store/actions/actionEmployee";
 import EditBranch from "./EditBranch";
+import { handleDeleteBranch } from "../store/actions/actionBranch";
 
 
 export default function TableRowBranch({branch, idx}) {
@@ -13,7 +14,7 @@ export default function TableRowBranch({branch, idx}) {
 
   const handleDelete = () => {
     Swal.fire({
-      title: "Apakah anda ingin menghapus data pegawai?",
+      title: "Apakah anda ingin menghapus data cabang?",
       text: "Data tidak akan dapat dikembalikan!",
       icon: "warning",
       showCancelButton: true,
@@ -22,8 +23,8 @@ export default function TableRowBranch({branch, idx}) {
       confirmButtonText: "Ya",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(handleDeleteEmployee(employee.id));
-        Swal.fire("Terhapus!", "Data pegawai yang dipilih berhasil dihapus.", "success");
+        dispatch(handleDeleteBranch(branch.id));
+        Swal.fire("Terhapus!", "Data cabang yang dipilih berhasil dihapus.", "success");
       }
     });
   };

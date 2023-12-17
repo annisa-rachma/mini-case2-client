@@ -83,3 +83,25 @@ export function handleEditBranch(payload, id) {
     }
   };
 }
+
+export function handleDeleteBranch(id) {
+  return async function (dispatch) {
+    try {
+      const res = await fetch(
+        import.meta.env.VITE_BASE_URL + `/branches/${id}`,
+        {
+          method: "delete",
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) throw data;
+      dispatch(fetchBranches());
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };
+}
