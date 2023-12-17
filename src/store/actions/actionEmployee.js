@@ -3,12 +3,6 @@ export function fetchEmployees() {
     try {
       let url = import.meta.env.VITE_BASE_URL + "/employees";
 
-      // if(params) {
-      //   url += params
-      // }
-
-      // console.log(url, '<<< url dari action')
-
       const res = await fetch(url, {
         headers: { access_token: localStorage.getItem("access_token") },
       });
