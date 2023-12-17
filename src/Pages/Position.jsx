@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AddBranch from "../Component/AddBranch";
+import AddBranchPosition from "../Component/AddBranchPosition";
 import { fetchPositions } from "../store/actions/actionPosition";
 import TableRowPosition from "../Component/TableRowPosition";
 
@@ -62,7 +62,7 @@ export default function Position() {
         </table>
       </div>
 
-      <AddBranch onClose={handleOnClose} visible={showAdd}/>
+      <AddBranchPosition onClose={handleOnClose} visible={showAdd}/>
     </>
   );
 }

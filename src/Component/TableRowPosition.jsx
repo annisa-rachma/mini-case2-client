@@ -1,10 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import EditEmployee from "./EditEmployeePopup";
-import { handleDeleteEmployee } from "../store/actions/actionEmployee";
 import EditBranch from "./EditBranch";
 import { handleDeleteBranch } from "../store/actions/actionBranch";
+import EditPosition from "./EditPosition";
 
 
 export default function TableRowPosition({position, idx}) {
@@ -74,10 +73,10 @@ export default function TableRowPosition({position, idx}) {
       </tr>
       
       {editClicked && (
-        <EditBranch
+        <EditPosition
           onClose={handleOnCloseEdit}
           visible={showEdit}
-          id={branch.id}
+          id={position.id}
         />
       )} 
     </>

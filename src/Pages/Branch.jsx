@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TableRowBranch from "../Component/TabelRowBranch";
 import { fetchBranches } from "../store/actions/actionBranch";
-import AddBranch from "../Component/AddBranch";
+import AddBranchPosition from "../Component/AddBranchPosition";
 
 export default function Branch() {
   const [showAdd, setShowAdd] = useState(false)
@@ -62,7 +62,7 @@ export default function Branch() {
         </table>
       </div>
 
-      <AddBranch onClose={handleOnClose} visible={showAdd}/>
+      <AddBranchPosition onClose={handleOnClose} visible={showAdd}/>
     </>
   );
 }

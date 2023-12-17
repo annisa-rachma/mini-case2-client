@@ -7,13 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { handleAddBranch } from "../store/actions/actionBranch";
 import { handleAddPosition } from "../store/actions/actionPosition";
 
-export default function AddBranch({ visible, onClose }) {
+export default function AddBranchPosition({ visible, onClose }) {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     name: "",
   });
   const location = useLocation();
-  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState("");
 
   const handleChange = (event) => {
