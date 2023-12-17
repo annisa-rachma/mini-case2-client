@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import { LiaWindowCloseSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { handleAddBranch } from "../store/actions/actionBranch";
+import { handleAddPosition } from "../store/actions/actionPosition";
 
-export default function AddBranch({ visible, onClose }) {
+export default function AddBranchPosition({ visible, onClose }) {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     name: "",
   });
+  const location = useLocation();
+  const [currentPage, setCurrentPage] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,19 +24,60 @@ export default function AddBranch({ visible, onClose }) {
     });
   };
 
-  const handleSubmit = async (event) => {
+  useEffect(() => {
+    // Use a switch statement or if-else if conditions to set currentPage based on pathname
+    switch (location.pathname) {
+      case "/cabang":
+        setCurrentPage("cabang");
+        break;
+      case "/jabatan":
+        setCurrentPage("jabatan");
+        break;
+      default:
+        setCurrentPage("/cabang");
+    }
+  }, [location.pathname]);
+
+  const handleSubmitBranch = async (event) => {
     try {
       event.preventDefault();
       await dispatch(handleAddBranch(input));
       setInput({
-        firstName: "",
-        lastName: "",
-        BranchId: "",
-        PositionId: "",
-        startDate: "",
-        endDate: "",
+        name: "",
       });
       toast.success("Berhasil menambahkan cabang baru", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      onClose();
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
+
+  const handleSubmitPosition = async (event) => {
+    try {
+      event.preventDefault();
+      await dispatch(handleAddPosition(input));
+      setInput({
+        name: "",
+      });
+      toast.success("Berhasil menambahkan jabatan baru", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -65,7 +110,7 @@ export default function AddBranch({ visible, onClose }) {
         <div className="bg-white rounded-lg p-6 w-[500px]">
           <div className="flex flex-row justify-between">
             <h1 className="font-semibold text-center text-xl text-[#1B9ABC]">
-              Masukkan Data Cabang
+              Masukkan Data {currentPage == "cabang" ? "Cabang" : "Jabatan"}
             </h1>
             <div className="text-[#1B9ABC]">
               <LiaWindowCloseSolid
@@ -77,18 +122,18 @@ export default function AddBranch({ visible, onClose }) {
           </div>
 
           <form
-            onSubmit={handleSubmit}
+            onSubmit={currentPage == "cabang" ? handleSubmitBranch: handleSubmitPosition }
             id="form-login"
             className="text-[#1B9ABC]"
           >
             <div className="flex flex-col mt-4">
-              <label className="">Nama Cabang</label>
+              <label className="">Nama {currentPage == "cabang" ? "Cabang" : "Jabatan"}</label>
               <input
                 type="text"
                 value={input.name}
                 name="name"
                 onChange={handleChange}
-                placeholder="Masukkan nama cabang..."
+                placeholder={`Masukkan nama ${currentPage == "cabang" ? "cabang" : "jabatan"}...`}
                 className="w-[100%] h-10 p-4 mt-1 bg-white border border-[#1B9ABC] rounded-lg text-[#1B9ABC] text-md"
               />
             </div>

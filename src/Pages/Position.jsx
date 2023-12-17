@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TableRowBranch from "../Component/TabelRowBranch";
-import { fetchBranches } from "../store/actions/actionBranch";
 import AddBranchPosition from "../Component/AddBranchPosition";
+import { fetchPositions } from "../store/actions/actionPosition";
+import TableRowPosition from "../Component/TableRowPosition";
 
-export default function Branch() {
+export default function Position() {
   const [showAdd, setShowAdd] = useState(false)
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch();
 
-  let branches = useSelector((state) => {
-    return state.branchReducer.branches;
+  let positions = useSelector((state) => {
+    return state.positionReducer.positions;
   });
-  const fetchDataBranches = async () => {
+  const fetchData = async () => {
     try {
       setLoading(true)
-      await dispatch(fetchBranches());
+      await dispatch(fetchPositions());
     } catch (error) {
       console.log(error);
     } finally {
@@ -23,17 +23,17 @@ export default function Branch() {
     }
   };
   useEffect(() => {
-    fetchDataBranches();
+    fetchData();
   }, []);
 
   const handleOnClose = () => setShowAdd(false)
   return (
     <>
       <div className=" grid grid-cols-2 py-8 pl-4 mr-4">
-        <div className="text-4xl font-semibold text-secondary ">Data Cabang</div>
+        <div className="text-4xl font-semibold text-secondary ">Data Jabatan</div>
         <div className="grid justify-items-end">
           <div onClick={() => {setShowAdd(true)}} className="border cursor-pointer grid place-content-center border-[#1B9ABC] py-1 px-5 bg-[#1B9ABC] rounded-lg text-white hover:bg-[#117d9a] hover:text-white">
-            + Tambah Cabang
+            + Tambah Jabatan
           </div>
         </div>
       </div>
@@ -43,10 +43,10 @@ export default function Branch() {
             <tr className="text-left text-secondary">
               <th className=" py-3 px-4 border-b-[1px] border-[#6ed1ec]">NO</th>
               <th className=" py-3 px-4 border-b-[1px] border-[#6ed1ec]">
-                KODE CABANG
+                KODE JABATAN
               </th>
               <th className=" py-3 px-4 border-b-[1px] border-[#6ed1ec]">
-                NAMA CABANG
+                NAMA JABATAN
               </th>
               <th className=" py-3 px-4 border-b-[1px] border-[#6ed1ec] text-gray-50">
                 ACT
@@ -55,8 +55,8 @@ export default function Branch() {
           </thead>
           <tbody>
             {loading && <tr><td>Loading...</td></tr>  }
-            {!loading && branches?.map((branch, idx) => {
-            return <TableRowBranch key={idx} branch={branch} idx={idx} />;
+            {!loading && positions?.map((position, idx) => {
+            return <TableRowPosition key={idx} position={position} idx={idx} />;
           })}
           </tbody>
         </table>
