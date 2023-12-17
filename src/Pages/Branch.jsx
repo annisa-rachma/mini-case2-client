@@ -40,7 +40,7 @@ export default function Branch() {
           </div>
         </div>
       </div>
-      <div className="mt-8  p-8 pl-4 mr-4 h-[480px] w-[1150px] overflow-scroll">
+      <div className="mt-8  p-8 pl-4 mr-4 h-[480px] w-[1150px] overflow-y-scroll">
         <table className="border-t-[1px] border-[#1B9ABC]  w-[100%]">
           <thead className="">
             <tr className="text-left text-secondary">
