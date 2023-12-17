@@ -4,6 +4,7 @@ import Branch from "../Pages/Branch";
 import Dashboard from "../Pages/Dashboard";
 import LoginPage from "../Pages/LoginPage";
 import Position from "../Pages/Position";
+import Register from "../Pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         {
           path: "/jabatan",
           element: <Position />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
         },
       ]
   },
