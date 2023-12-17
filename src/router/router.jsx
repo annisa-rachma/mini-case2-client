@@ -3,6 +3,8 @@ import Layout from "../Component/Layout";
 import Branch from "../Pages/Branch";
 import Dashboard from "../Pages/Dashboard";
 import LoginPage from "../Pages/LoginPage";
+import Position from "../Pages/Position";
+import Register from "../Pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,14 @@ const router = createBrowserRouter([
           path: "/cabang",
           element: <Branch />,
         },
-        
+        {
+          path: "/jabatan",
+          element: <Position />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
       ]
   },
   {

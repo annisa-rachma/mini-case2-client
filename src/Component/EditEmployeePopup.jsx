@@ -82,12 +82,13 @@ export default function EditEmployee({ visible, onClose, id }) {
     });
   };
 
+  // console.log(employee)
   useEffect(() => {
     setInput({
-      firstName: employee?.firstName || "",
-      lastName: employee?.lastName || "",
-      BranchId: employee?.BranchId || "",
-      PositionId: employee?.PositionId || "",
+      firstName: employee?.employee.firstName || "",
+      lastName: employee?.employee.lastName || "",
+      BranchId: employee?.employee.BranchId || "",
+      PositionId: employee?.employee.PositionId || "",
       startDate: employee?.startDate || "",
       endDate: employee?.endDate || "",
     });

@@ -3,25 +3,22 @@ import { LiaWindowCloseSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  fetchBranchDetail,
-  handleEditBranch,
-} from "../store/actions/actionBranch";
+import { fetchPositionDetail, handleEditPosition } from "../store/actions/actionPosition";
 
-export default function EditBranch({ visible, onClose, id }) {
+export default function EditPosition({ visible, onClose, id }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState({
     name: "",
   });
 
-  const branch = useSelector((state) => {
-    return state.branchReducer.branchById;
+  const position = useSelector((state) => {
+    return state.positionReducer.positionById;
   });
   const fetchDetail = async () => {
     try {
       setLoading(true);
-      await dispatch(fetchBranchDetail(id));
+      await dispatch(fetchPositionDetail(id));
     } catch (error) {
       console.log(error);
     } finally {
@@ -43,15 +40,15 @@ export default function EditBranch({ visible, onClose, id }) {
 
   useEffect(() => {
     setInput({
-      name: branch?.name || "",
+      name: position?.name || "",
     });
-  }, [branch]);
+  }, [position]);
 
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      await dispatch(handleEditBranch(input, id));
-      toast.success("Berhasil mengedit cabang", {
+      await dispatch(handleEditPosition(input, id));
+      toast.success("Berhasil mengedit jabatan", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -84,7 +81,7 @@ export default function EditBranch({ visible, onClose, id }) {
         <div className="bg-white rounded-lg p-6 w-[500px]">
           <div className="flex flex-row justify-between">
             <h1 className="font-semibold text-center text-xl text-[#1B9ABC]">
-              Edit Data Cabang
+              Edit Data Jabatan
             </h1>
             <div className="text-[#1B9ABC]">
               <LiaWindowCloseSolid
@@ -104,7 +101,7 @@ export default function EditBranch({ visible, onClose, id }) {
                 className="text-[#1B9ABC]"
               >
                 <div className="flex flex-col mt-4">
-                  <label className="">Nama Cabang</label>
+                  <label className="">Nama Jabatan</label>
                   <input
                     type="text"
                     value={input.name}
