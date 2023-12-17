@@ -81,7 +81,7 @@ export default function EditPosition({ visible, onClose, id }) {
         <div className="bg-white rounded-lg p-6 w-[500px]">
           <div className="flex flex-row justify-between">
             <h1 className="font-semibold text-center text-xl text-[#1B9ABC]">
-              Masukkan Data Jabatan
+              Edit Data Jabatan
             </h1>
             <div className="text-[#1B9ABC]">
               <LiaWindowCloseSolid
@@ -101,7 +101,7 @@ export default function EditPosition({ visible, onClose, id }) {
                 className="text-[#1B9ABC]"
               >
                 <div className="flex flex-col mt-4">
-                  <label className="">Nama Cabang</label>
+                  <label className="">Nama Jabatan</label>
                   <input
                     type="text"
                     value={input.name}

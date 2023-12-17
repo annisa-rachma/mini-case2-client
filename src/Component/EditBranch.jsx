@@ -84,7 +84,7 @@ export default function EditBranch({ visible, onClose, id }) {
         <div className="bg-white rounded-lg p-6 w-[500px]">
           <div className="flex flex-row justify-between">
             <h1 className="font-semibold text-center text-xl text-[#1B9ABC]">
-              Masukkan Data Cabang
+              Edit Data Cabang
             </h1>
             <div className="text-[#1B9ABC]">
               <LiaWindowCloseSolid
