@@ -1,5 +1,6 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import Layout from "../Component/Layout";
+import Branch from "../Pages/Branch";
 import Dashboard from "../Pages/Dashboard";
 import LoginPage from "../Pages/LoginPage";
 
@@ -17,7 +18,10 @@ const router = createBrowserRouter([
             path: "/",
             element: <Dashboard />,
         },
-        
+        {
+          path: "/cabang",
+          element: <Branch />,
+        },
         
       ]
   },

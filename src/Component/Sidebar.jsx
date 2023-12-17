@@ -1,13 +1,10 @@
 // import Logo from "/logo.svg";
 import { MdOutlineDashboardCustomize, MdOutlineHome } from "react-icons/md";
-import { FaFileInvoiceDollar } from "react-icons/fa";
-import { FaHistory } from "react-icons/fa";
-import { BiTransferAlt } from "react-icons/bi";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import { RiBankFill } from "react-icons/ri";
 import { SiOnlyoffice } from "react-icons/si";
 import { IoPersonAdd } from "react-icons/io5";
@@ -18,7 +15,7 @@ export default function Sidebar() {
   const [currentPage, setCurrentPage] = useState("");
 
   const handleLogout = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     Swal.fire({
       title: "Anda yakin ingin keluar?",
       showCancelButton: true,
@@ -56,11 +53,7 @@ export default function Sidebar() {
     <>
       <div className="py-6 px-10 w-64 border-r border-gray-200">
         <div className="mt-6">
-          <img
-            src={logo}
-            alt="logo"
-            className="w-36 mx-auto "
-          />
+          <img src={logo} alt="logo" className="w-36 mx-auto " />
         </div>
 
         <div className="flex flex-col gap-y-2 text-gray-500 mt-12 ">
@@ -116,7 +109,9 @@ export default function Sidebar() {
               <div>
                 <IoPersonAdd size="25px" />
               </div>
-              <div className="ml-4 grid place-content-center  ">Tambah Admin</div>
+              <div className="ml-4 grid place-content-center  ">
+                Tambah Admin
+              </div>
             </Link>
           </div>
 
