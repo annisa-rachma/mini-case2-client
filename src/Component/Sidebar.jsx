@@ -53,7 +53,7 @@ export default function Sidebar() {
     <>
       <div className="py-6 px-10 w-64 border-r border-gray-200">
         <div className="mt-6">
-          <img src={logo} alt="logo" className="w-36 mx-auto " />
+          <img src={logo} alt="logo" className="w-[350px] mx-auto " />
         </div>
 
         <div className="flex flex-col gap-y-2 text-gray-500 mt-12 ">
